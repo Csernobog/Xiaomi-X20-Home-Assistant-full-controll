@@ -8,8 +8,8 @@ Xiaomi X20+ (c102gl) robot vacuum cleaner full and custom area cleaning, and cle
 
 Primary room-clean action: xiaomi_miot.call_action with siid: 4, aiid: 1
 
-## Properties (set_miot_property)
-# Cleaning mode / workflow (Vacuum / Mop combinations)
+# Properties (set_miot_property)
+## Cleaning mode / workflow (Vacuum / Mop combinations)
 
 Service: xiaomi_miot.set_miot_property
 
@@ -24,7 +24,7 @@ Values:
 - 67585 → Mopping
 - 67587 → Vacuuming before mopping
 
-Suction / fan power
+## Suction / fan power
 
 Service: xiaomi_miot.set_miot_property
 
@@ -34,13 +34,10 @@ Name: vacuum_extend.cleaning_mode
 
 Values: 0..3 (device/app dependent labeling)
 
-0 → Silent
-
-1 → Standard
-
-2 → Strong
-
-3 → Turbo
+- 0 → Silent
+- 1 → Standard
+- 2 → Strong
+- 3 → Turbo
 
 Mop water level / mop mode
 
