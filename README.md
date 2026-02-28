@@ -1,16 +1,15 @@
 # Xiaomi-X20-Home-Assistant-full-controll
 Xiaomi X20+ (c102gl) robot vacuum cleaner full and custom area cleaning, and cleaning setting - from "reverse  engeneering"
 
-#Entities / Integration
+# Entities / Integration
 
-Home Assistant integration: xiaomi_miot
-
-Vacuum entity: vacuum.xiaomi_c102gl_4f4d_robot_cleaner
+- Home Assistant integration: xiaomi_miot
+- Vacuum entity: vacuum.xiaomi_c102gl_4f4d_robot_cleaner
 
 Primary room-clean action: xiaomi_miot.call_action with siid: 4, aiid: 1
 
-#Properties (set_miot_property)
-Cleaning mode / workflow (Vacuum / Mop combinations)
+## Properties (set_miot_property)
+# Cleaning mode / workflow (Vacuum / Mop combinations)
 
 Service: xiaomi_miot.set_miot_property
 
@@ -20,13 +19,10 @@ Name (spec): clean_setting (uint32)
 
 Values:
 
-67586 → Vacuuming
-
-67584 → Vacuuming & Mopping
-
-67585 → Mopping
-
-67587 → Vacuuming before mopping
+- 67586 → Vacuuming
+- 67584 → Vacuuming & Mopping
+- 67585 → Mopping
+- 67587 → Vacuuming before mopping
 
 Suction / fan power
 
