@@ -39,7 +39,7 @@ Values: 0..3 (device/app dependent labeling)
 - 2 → Strong
 - 3 → Turbo
 
-Mop water level / mop mode
+## Mop water level / mop mode
 
 Service: xiaomi_miot.set_miot_property
 
@@ -49,15 +49,12 @@ Name: vacuum_extend.mop_mode
 
 Values:
 
-0 → Mop water off (dry / no water)
+- 0 → Mop water off (dry / no water)
+- 1 → Water Level 1
+- 2 → Water Level 2
+- 3 → Water Level 3
 
-1 → Water Level 1
-
-2 → Water Level 2
-
-3 → Water Level 3
-
-Cleaning area (not cleaning workflow mode)
+## Cleaning area (not cleaning workflow mode)
 
 Service: xiaomi_miot.get_properties
 
@@ -65,10 +62,10 @@ SIID / PIID: siid: 4, piid: 3
 
 Name: vacuum_extend.cleaning_area
 
-Note: This is not the vacuum/mop workflow mode.
+Note: This is not the vacuum/mop workflow mode!!
 
-Actions (call_action)
-Room / multi-room cleaning (segment plan)
+# Actions (call_action)
+## Room / multi-room cleaning (segment plan)
 
 Service: xiaomi_miot.call_action
 
@@ -86,14 +83,12 @@ Payload format (string, JSON inside):
 
 Example (two rooms)
 {"selects":[[2,1,2,2,1],[6,1,2,2,1]]}
-Notes
+Notes:
 
-piid: 10 must be a string. If HA templating converts it into a dict/object, the device rejects it.
+- piid: 10 must be a string. If HA templating converts it into a dict/object, the device rejects it.
+- Multi-room works with multiple entries in selects (processed in order).
+- If a room ID is stale/invalid (e.g., leftover from old auto-mapping), the robot may skip it.
 
-Multi-room works with multiple entries in selects (processed in order).
-
-If a room ID is stale/invalid (e.g., leftover from old auto-mapping), the robot may skip it.
-
-Known reliable command path in HA
+## Known reliable command path in HA
 
 Due to HA script/Jinja type coercion issues, using python_script to call xiaomi_miot.call_action is deterministic and reliable for piid:10 payload string handling.
