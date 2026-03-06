@@ -1,0 +1,366 @@
+type: custom:expander-card
+title: Expander Card
+cards:
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            icon: mdi:sofa
+            entity: input_boolean.room_9
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            icon: mdi:silverware-fork-knife
+            entity: input_boolean.room_4
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            icon: mdi:kettle-steam
+            entity: input_boolean.room_2
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            icon: mdi:hanger
+            entity: input_boolean.room_6
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            icon: mdi:toilet
+            entity: input_boolean.room_1
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            entity: input_boolean.room_7
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            entity: input_boolean.room_10
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            entity: input_boolean.room_5
+            styles:
+              card:
+                - font-size: 10px
+                - font-weight: bold
+            state:
+              - value: "on"
+                styles:
+                  icon:
+                    - color: "#39FF14"
+                  name:
+                    - color: "#39FF14"
+                  card:
+                    - box-shadow: 0 0 10px
+              - value: "off"
+                styles:
+                  icon:
+                    - color: rgb(28, 128, 210)
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: Start
+            icon: mdi:play
+            tap_action:
+              action: call-service
+              service: python_script.x20_controller
+              service_data:
+                command: start
+                repeats: 1
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - background-color: rgba(28, 128, 210, 0.15)
+              icon:
+                - color: rgb(28, 128, 210)
+            state:
+              - operator: template
+                value: |
+                  [[[
+                    return states['input_select.x20_ui_state']?.state === 'running';
+                  ]]]
+                styles:
+                  card:
+                    - background-color: "#39FF14"
+                    - box-shadow: 0 0 10px
+                  icon:
+                    - color: black
+                  name:
+                    - color: black
+          - type: custom:button-card
+            name: Pause
+            icon: mdi:pause
+            tap_action:
+              action: call-service
+              service: python_script.x20_controller
+              service_data:
+                command: pause
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - background-color: rgba(28, 128, 210, 0.15)
+              icon:
+                - color: rgb(28, 128, 210)
+            state:
+              - operator: template
+                value: |
+                  [[[
+                    return states['input_select.x20_ui_state']?.state === 'paused';
+                  ]]]
+                styles:
+                  card:
+                    - background-color: "#39FF14"
+                    - box-shadow: 0 0 10px
+                  icon:
+                    - color: black
+                  name:
+                    - color: black
+          - type: custom:button-card
+            name: Dock
+            icon: mdi:home-import-outline
+            tap_action:
+              action: call-service
+              service: python_script.x20_controller
+              service_data:
+                command: dock
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - background-color: rgba(28, 128, 210, 0.15)
+              icon:
+                - color: rgb(28, 128, 210)
+          - type: custom:button-card
+            name: Stop & Dock
+            icon: mdi:stop-circle-outline
+            tap_action:
+              action: call-service
+              service: python_script.x20_controller
+              service_data:
+                command: stop_and_dock
+            styles:
+              card:
+                - font-size: 12px
+                - font-weight: bold
+                - background-color: rgba(28, 128, 210, 0.15)
+              icon:
+                - color: rgb(28, 128, 210)
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-select-card
+            entity: input_select.x20_mode
+            fill_container: true
+            icon: mdi:vacuum
+            name: Takaritás
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-secondary-font-size: 10px;
+                   --card-primary-font-size: 12px;
+                   
+                  }
+                mushroom-select-option-control$:
+                  mushroom-select$: |
+                    .mdc-select__selected-text {
+                      font-size: 10px !important;
+                    }
+          - type: custom:mushroom-select-card
+            entity: input_select.x20_suction
+            name: Erő
+            fill_container: true
+            icon: mdi:vacuum
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-secondary-font-size: 10px;
+                   --card-primary-font-size: 12px;
+                  }
+                mushroom-select-option-control$:
+                  mushroom-select$: |
+                    .mdc-select__selected-text {
+                      font-size: 10px !important;
+                    }
+          - type: custom:mushroom-select-card
+            entity: input_select.x20_water
+            name: Felmosás
+            fill_container: true
+            icon: mdi:water
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-secondary-font-size: 10px;
+                   --card-primary-font-size: 12px;
+                  }
+                mushroom-select-option-control$:
+                  mushroom-select$: |
+                    .mdc-select__selected-text {
+                      font-size: 10px !important;
+                    }
+      - type: horizontal-stack
+        cards:
+          - type: entity
+            entity: sensor.rozsika_side_brush_left
+            name: Seprű
+            label: Main brush left
+          - type: entity
+            entity: sensor.rozsika_main_brush_left
+            name: Kefe
+            label: Side brush left
+          - type: entity
+            entity: sensor.rozsika_filter_left
+            name: Filter
+title-card:
+  type: custom:button-card
+  name: |
+    [[[
+       const s = states['sensor.rozsika_status']?.state;
+       const t = states['sensor.rozsika_current_room']?.state;
+      if (s === 'sleeping' || s === 'off') {
+        return 'Rózsika - pihen -' + t;
+      } else {
+        return 'Rózsika - ' + s + ' - ' + t;
+      }  
+    ]]]
+      
+  icon: mdi:robot-vacuum
+  show_name: true
+  show_icon: true
+  styles:
+    card:
+      - border: none
+      - background: none
+      - box-shadow: none
+      - padding: 30px 0
+    grid:
+      - grid-template-areas: "\"i n\""
+      - grid-template-columns: min-content 1fr
+      - align-items: center
+      - column-gap: 12px
+    icon:
+      - width: 20px
+      - color: var(--primary-text-color)
+    name:
+      - font-size: 15px
+      - font-weight: 500
+      - justify-self: start
+  tap_action:
+    action: none
+clear: true
+gap: "0"
+padding: "0"
+clear-children: true
+title-card-clickable: false
+title-card-button-overlay: true
+title-card-padding: "0"
+overlay-margin: "0"
